@@ -62,6 +62,12 @@ jobs:
         with:
           name: InfiniTime DFU ${{ env.REF_NAME }}
           path: ./build/output/pinetime-mcuboot-app-dfu/*
+      # Original DFU zip, untouched, for Gadgetbridge (it can't read GitHub's re-zipped artifact).
+      - name: Upload DFU zip for phone flashing
+        uses: actions/upload-artifact@v4
+        with:
+          name: PHONE-FLASH firmware ${{ env.REF_NAME }}
+          path: ./build/output/pinetime-mcuboot-app-dfu-*.zip
       - name: Upload MCUBoot image artifacts
         uses: actions/upload-artifact@v4
         with:
